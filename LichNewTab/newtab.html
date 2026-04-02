@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lịch Âm Dương Việt Nam - Tab Mới</title>
+    <link rel="stylesheet" href="newtab.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="topbar">
+        <button id="openMonthBtn" class="month-pill" type="button" aria-haspopup="dialog"></button>
+      </div>
+
+      <section class="hero" aria-label="Thông tin ngày hiện tại">
+        <div class="hero-date">
+          <div id="lunarBig" class="hero-daynum" aria-label="Ngày dương"></div>
+          <div id="weekLine" class="hero-weekday" aria-label="Thứ"></div>
+        </div>
+
+        <div class="quote-block" aria-label="Câu trích dẫn">
+          <div class="quote-text">
+            Giá trị của một ý tưởng nằm ở cách sử dụng nó. -
+            The value of an idea lies in the using of it.
+          </div>
+          <div class="quote-author">Thomas Edison</div>
+        </div>
+
+        <div class="badge-wrap" aria-label="Ngày âm">
+          <div class="lunar-badge">
+            <div id="lunarBadgeDay" class="badge-day"></div>
+            <div class="badge-month">
+              THÁNG <span id="lunarBadgeMonth" class="badge-month-num"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ads-area">Ads area</div>
+
+      <!-- Tùy chọn nền (giữ lại để người dùng có thể khớp đúng ảnh mẫu) -->
+      <button id="setBgBtn" class="ghost-btn" type="button">Đặt ảnh nền</button>
+      <button id="resetBgBtn" class="ghost-btn ghost-btn--secondary hidden" type="button">Mặc định</button>
+      <input id="bgFileInput" class="hidden-input" type="file" accept="image/*" />
+    </main>
+
+    <div id="modalBackdrop" class="modal-backdrop hidden" role="presentation" aria-hidden="true"></div>
+    <section id="monthModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-header">
+        <div id="modalTitle" class="modal-title"></div>
+        <button id="closeModalBtn" class="icon-btn" type="button" aria-label="Đóng">✕</button>
+      </header>
+      <div class="modal-body">
+        <div id="monthGrid" class="month-grid" aria-label="Lịch tháng"></div>
+      </div>
+    </section>
+
+    <!-- Nhúng amlich.js (bản offline có sẵn) để tính âm lịch & Giờ Hoàng Đạo -->
+    <script src="vendor/amlich.js"></script>
+    <script src="newtab.js"></script>
+  </body>
+</html>
+

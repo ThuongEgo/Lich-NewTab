@@ -1,0 +1,672 @@
+:root {
+  --bg0: #070A12;
+  --bg1: #0B1224;
+  --bg-user-image: none;
+  --card: rgba(255, 255, 255, 0.06);
+  --card2: rgba(255, 255, 255, 0.08);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.68);
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #F59E0B;
+  --accent2: #F97316;
+  --good: #34d399;
+  --shadow: 0 14px 40px rgba(0,0,0,0.45);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(249,115,22,0.20), transparent 60%),
+    radial-gradient(900px 500px at 80% 30%, rgba(245,158,11,0.18), transparent 55%),
+    linear-gradient(140deg, var(--bg0), var(--bg1));
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--bg-user-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.30;
+  filter: saturate(1.05) brightness(0.85);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 16px;
+}
+
+.ghost-btn {
+  align-self: flex-end;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+}
+
+.ghost-btn:hover {
+  background: rgba(255,255,255,0.09);
+}
+
+.ghost-btn--secondary {
+  border-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+}
+
+.hidden-input {
+  display: none;
+}
+
+.top {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 10px;
+  padding: 18px 18px 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.lunar-big {
+  font-size: 168px;
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-shadow: 0 10px 35px rgba(245,158,11,0.20);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.subline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.solar-line {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.week-line {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.year-solar {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.can-chi {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255,255,255,0.12);
+}
+
+.can-chi-item {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+}
+
+.tiet-khi {
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(245,158,11,0.25);
+  background: linear-gradient(180deg, rgba(245,158,11,0.12), rgba(255,255,255,0.02));
+  color: rgba(255,255,255,0.88);
+  font-weight: 650;
+}
+
+.grid-section {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.card-title {
+  color: rgba(255,255,255,0.85);
+  font-weight: 750;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.card-subtext {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hour-cell {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  padding: 12px;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hour-cell--active {
+  border-color: rgba(245,158,11,0.55);
+  background: linear-gradient(180deg, rgba(245,158,11,0.20), rgba(255,255,255,0.04));
+  box-shadow: 0 14px 40px rgba(245,158,11,0.18);
+}
+
+.hour-name {
+  font-weight: 900;
+  color: rgba(255,255,255,0.95);
+  font-size: 15px;
+}
+
+.hour-range {
+  margin-top: 4px;
+  color: rgba(245,158,11,0.95);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  z-index: 50;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(980px, calc(100vw - 26px));
+  max-height: min(820px, calc(100vh - 26px));
+  overflow: auto;
+  z-index: 60;
+  background: rgba(10, 15, 26, 0.96);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.65);
+}
+
+.hidden { display: none; }
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  background: rgba(10, 15, 26, 0.95);
+}
+
+.modal-title {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: rgba(255,255,255,0.09);
+}
+
+.modal-body {
+  padding: 14px 16px 18px;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dow-head {
+  text-align: center;
+  padding: 6px 4px;
+  color: rgba(255,255,255,0.66);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.day-cell {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  padding: 10px 10px;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.day-solar {
+  font-weight: 900;
+  color: rgba(255,255,255,0.9);
+}
+
+.day-lunar {
+  font-size: 12px;
+  color: rgba(245,158,11,0.95);
+  font-weight: 800;
+}
+
+@media (max-width: 980px) {
+  .lunar-big { font-size: 132px; }
+  .grid-section { grid-template-columns: 1fr; }
+  .can-chi { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================
+   Giao diện theo ảnh mẫu (pastel + bố cục giống điện thoại)
+   ========================================================== */
+:root {
+  --ui-blue: #1d4ed8;
+  --ui-blue2: #2563eb;
+  --ui-ink: #0f172a;
+  --ui-muted: rgba(15, 23, 42, 0.65);
+  --ui-pill-border: #2f5ea8;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 520px at 14% 20%, rgba(99, 102, 241, 0.16), transparent 60%),
+    radial-gradient(820px 520px at 84% 28%, rgba(16, 185, 129, 0.16), transparent 55%),
+    radial-gradient(720px 520px at 50% 88%, rgba(244, 114, 182, 0.16), transparent 56%),
+    linear-gradient(140deg, #F8E9FF 0%, #E3F3FF 40%, #D1FAE5 100%);
+  color: var(--ui-ink);
+}
+
+body::before {
+  opacity: 0.30; /* cho phép người dùng dùng ảnh nền upload */
+}
+
+/* Main layout */
+.app {
+  height: 100%;
+  padding: 0 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.topbar {
+  padding-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.month-pill {
+  position: relative;
+  border: 2px solid var(--ui-pill-border);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ui-blue);
+  border-radius: 999px;
+  padding: 10px 46px 10px 30px;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+}
+
+.month-pill::after {
+  content: "▼";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-52%);
+  font-size: 14px;
+  color: var(--ui-blue);
+}
+
+.hero {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+}
+
+.hero-date {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-daynum {
+  font-size: 150px;
+  font-weight: 900;
+  color: var(--ui-blue);
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  text-shadow: 0 10px 25px rgba(37, 99, 235, 0.14);
+}
+
+.hero-weekday {
+  margin-top: -8px;
+  font-size: 36px;
+  font-weight: 950;
+  color: var(--ui-blue);
+}
+
+.quote-block {
+  margin-top: 22px;
+  max-width: 720px;
+  text-align: center;
+  padding: 0 18px;
+}
+
+.quote-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.75);
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere; /* tự xuống dòng khi câu quá dài */
+  word-break: break-word;
+}
+
+.quote-author {
+  margin-top: 8px;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+.badge-wrap {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.lunar-badge {
+  width: 132px;
+  height: 132px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 6px solid rgba(245, 158, 11, 0.95);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-day {
+  font-size: 52px;
+  font-weight: 950;
+  color: var(--ui-blue);
+  line-height: 1;
+}
+
+.badge-month {
+  margin-top: -4px;
+  font-size: 16px;
+  font-weight: 950;
+  color: var(--ui-blue);
+  letter-spacing: 0.5px;
+}
+
+.bottom-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  gap: 8px;
+  padding: 10px 6px 6px;
+}
+
+.time-block {
+  text-align: left;
+  padding-left: 6px;
+}
+
+.time-label {
+  font-size: 20px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.time-value {
+  margin-top: 4px;
+  font-size: 28px;
+  font-weight: 950;
+  color: var(--ui-ink);
+}
+
+.time-sub {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.black-day-block {
+  text-align: center;
+  padding-bottom: 6px;
+}
+
+.black-day-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.detail-block {
+  text-align: right;
+  padding-right: 6px;
+}
+
+.detail-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.detail-line {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.75);
+}
+
+.nav-bar {
+  margin-top: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 6px 6px 4px;
+  background: rgba(255, 255, 255, 0.62);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.nav-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 6px 0 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(15, 23, 42, 0.62);
+}
+
+.nav-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+  font-size: 16px;
+}
+
+.nav-label {
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.ads-area {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.75);
+  color: rgba(15, 23, 42, 0.45);
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* Modal giữ nguyên phong cách cũ (dark) cho dễ đọc */
+
+@media (max-width: 520px) {
+  .month-pill {
+    font-size: 18px;
+    padding: 9px 40px 9px 22px;
+  }
+
+  .hero-daynum {
+    font-size: 118px;
+  }
+
+  .hero-weekday {
+    font-size: 28px;
+  }
+
+  .quote-text {
+    font-size: 14px;
+  }
+
+  .quote-author {
+    font-size: 16px;
+  }
+
+  .lunar-badge {
+    width: 112px;
+    height: 112px;
+    border-width: 5px;
+  }
+
+  .badge-day {
+    font-size: 44px;
+  }
+
+  .badge-month {
+    font-size: 14px;
+  }
+
+  .time-label {
+    font-size: 18px;
+  }
+
+  .time-value {
+    font-size: 24px;
+  }
+
+  .detail-line {
+    font-size: 14px;
+  }
+
+  .nav-label {
+    font-size: 12px;
+  }
+}
+
+/* Ẩn các khối bạn muốn bỏ khỏi giao diện */
+.bottom-row,
+.nav-bar,
+.ads-area {
+  display: none !important;
+}
+
+
